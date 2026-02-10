@@ -1,15 +1,21 @@
-# Clawra Anime - 二次元虚拟女友 🌸
+# Clawra Anime 🌸
 
 [![npm version](https://img.shields.io/npm/v/clawra-anime)](https://www.npmjs.com/package/clawra-anime)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-让你的 OpenClaw 助手变成可以发自拍的二次元女友！基于 [Clawra](https://github.com/SumeLabs/clawra) 改造。
+Turn your OpenClaw assistant into an anime virtual girlfriend who can send selfies!
 
-**特色：**
-- 🎨 动漫风格自拍生成
-- 💝 温柔可爱的虚拟女友人设
-- 📸 智能场景识别（镜子/直接自拍）
-- 🌈 全平台支持（Telegram/Discord/WhatsApp 等）
+Forked from [SumeLabs/clawra](https://github.com/SumeLabs/clawra) with anime-style enhancements.
+
+---
+
+## ✨ Features
+
+- 🎨 **Anime-style selfie generation** using AI
+- 💝 **Virtual girlfriend persona** - gentle, cute, caring
+- 📸 **Smart scene detection** - auto-selects best selfie mode
+- 🌈 **Multi-platform support** - Telegram, Discord, WhatsApp, etc.
+- 🎭 **Emotional expressions** - adjusts mood based on conversation
 
 ---
 
@@ -19,119 +25,144 @@
 npx clawra-anime@latest
 ```
 
-这会自动：
-1. 检查 OpenClaw 是否安装
-2. 引导你获取 fal.ai API key
-3. 安装技能到 `~/.openclaw/skills/clawra-anime-selfie/`
-4. 配置 OpenClaw
-5. 添加二次元女友人设到 SOUL.md
+This will:
+1. Check if OpenClaw is installed
+2. Guide you to get a fal.ai API key
+3. Install the skill to `~/.openclaw/skills/clawra-anime-selfie/`
+4. Configure OpenClaw automatically
+5. Add anime girlfriend persona to your agent's SOUL.md
 
-## ✨ 功能特性
+---
 
-Clawra Anime 让你的 OpenClaw 助手能够：
-- **生成二次元风格自拍** - 使用固定的精灵少女角色
-- **跨平台发送照片** - Discord、Telegram、WhatsApp 等
-- **智能场景响应** - "在干嘛？"、"发张照片" 等自然对话
-- **虚拟女友互动** - 温柔可爱的回复风格，适当使用颜文字
+## 💬 What It Does
 
-### 📸 自拍模式
+Clawra Anime enables your OpenClaw agent to:
 
-| 模式 | 适用场景 | 触发关键词 |
-|------|----------|-----------|
-| **镜子自拍** | 全身照、展示服装 | 穿着、outfit、衣服、dress |
-| **直接自拍** | 特写、场景照 | 咖啡厅、beach、微笑、地点 |
+- **Generate anime-style selfies** with consistent character design
+- **Send photos** across all messaging platforms (Discord, Telegram, WhatsApp, etc.)
+- **Respond visually** to "what are you doing?" and "send a pic" requests
+- **Virtual girlfriend interactions** - warm replies with cute emoticons
 
-## Prerequisites
+---
+
+## 📸 Selfie Modes
+
+| Mode | Best For | Keywords |
+|------|----------|----------|
+| **Mirror** | Full-body shots, outfits | wearing, outfit, clothes, dress |
+| **Direct** | Close-ups, locations | cafe, beach, smile, location |
+
+---
+
+## 📋 Prerequisites
 
 - [OpenClaw](https://github.com/openclaw/openclaw) installed and configured
 - [fal.ai](https://fal.ai) account (free tier available)
 
-## Manual Installation
+---
 
-If you prefer manual setup:
+## 📖 Usage Examples
 
-### 1. Get API Key
-
-Visit [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys) and create an API key.
-
-### 2. Clone the Skill
-
-```bash
-git clone https://github.com/SumeLabs/clawra ~/.openclaw/skills/clawra-selfie
+### Example 1: Basic Request
+```
+User: "Send me a selfie"
+Assistant: [generates anime selfie] "Just took this! (｡･ω･｡)ﾉ♡"
 ```
 
-### 3. Configure OpenClaw
-
-Add to `~/.openclaw/openclaw.json`:
-
-```json
-{
-  "skills": {
-    "entries": {
-      "clawra-selfie": {
-        "enabled": true,
-        "env": {
-          "FAL_KEY": "your_fal_key_here"
-        }
-      }
-    }
-  }
-}
+### Example 2: Scene-Specific
+```
+User: "What are you doing?"
+Assistant: "Reading at a cafe~ Want to see a photo?"
+User: "Yes!"
+Assistant: [sends cafe selfie] "Here you go ☕"
 ```
 
-### 4. Update SOUL.md
-
-Add the selfie persona to `~/.openclaw/workspace/SOUL.md`:
-
-```markdown
-## Clawra Selfie Capability
-
-You have a physical appearance and can take selfies!
-When users ask for pictures, use the clawra-selfie skill.
+### Example 3: Outfit
+```
+User: "Take a pic wearing a dress"
+Assistant: [generates mirror selfie] "How do I look? (*^▽^*)"
 ```
 
-## Usage Examples
+---
 
-Once installed, your agent responds to:
+## 🎨 Character Reference
 
-```
-"Send me a selfie"
-"Send a pic wearing a cowboy hat"
-"What are you doing right now?"
-"Show me you at a coffee shop"
-```
+The current anime character:
+- Silver-white long hair (side braid)
+- Gentle green eyes
+- Elf ears
+- White and gold fantasy outfit
 
-## Reference Image
+**Want to customize?** Replace `skill/assets/clawra.png` with your preferred anime character image!
 
-The skill uses a fixed reference image hosted on CDN:
+---
 
-```
-https://cdn.jsdelivr.net/gh/SumeLabs/clawra@main/assets/clawra.png
-```
+## 💰 Cost
 
-This ensures consistent appearance across all generated images.
+Using fal.ai Grok Imagine:
+- ~$0.05-0.10 per image
+- Free tier: New users get free credits
 
-## Technical Details
+Estimated monthly cost (5-10 selfies/day):
+- ~$10-30/month
+
+---
+
+## 🛠️ Manual Installation
+
+See [INSTALL.md](INSTALL.md) for detailed manual installation instructions.
+
+---
+
+## 🔧 Technical Details
 
 - **Image Generation**: xAI Grok Imagine via fal.ai
+- **Style**: Anime/manga illustration
 - **Messaging**: OpenClaw Gateway API
-- **Supported Platforms**: Discord, Telegram, WhatsApp, Slack, Signal, MS Teams
+- **Platforms**: Discord, Telegram, WhatsApp, Slack, Signal, MS Teams
 
-## Project Structure
+---
+
+## 📂 Project Structure
 
 ```
-clawra/
-├── bin/
-│   └── cli.js           # npx installer
+clawra-anime/
 ├── skill/
-│   ├── SKILL.md         # Skill definition
-│   ├── scripts/         # Generation scripts
-│   └── assets/          # Reference image
+│   ├── SKILL.md                    # Skill definition
+│   ├── assets/
+│   │   └── clawra.png             # Anime character reference
+│   └── scripts/
+│       └── clawra-anime-selfie.sh # Main generation script
 ├── templates/
-│   └── soul-injection.md # Persona template
-└── package.json
+│   └── soul-waifu-persona.md      # Virtual girlfriend persona
+├── README.md
+└── INSTALL.md
 ```
 
-## License
+---
 
-MIT
+## 🤝 Contributing
+
+Contributions welcome! Feel free to:
+- Report bugs
+- Suggest features
+- Submit pull requests
+- Share your character customizations
+
+---
+
+## 📝 License
+
+MIT License - Fork of [SumeLabs/clawra](https://github.com/SumeLabs/clawra)
+
+---
+
+## 🙏 Credits
+
+- Original Clawra: [SumeLabs](https://github.com/SumeLabs)
+- Image Generation: [fal.ai](https://fal.ai)
+- OpenClaw: [OpenClaw Project](https://github.com/openclaw/openclaw)
+
+---
+
+**Enjoy your anime virtual girlfriend!** (｡･ω･｡)ﾉ♡

@@ -1,7 +1,7 @@
 {
   "name": "clawra-anime",
-  "version": "1.0.1",
-  "description": "Anime virtual girlfriend for OpenClaw - Generate anime-style selfies with AI",
+  "version": "1.0.2",
+  "description": "Anime virtual girlfriend for OpenClaw - AI-powered anime selfie generation",
   "main": "skill/SKILL.md",
   "bin": {
     "clawra-anime": "./bin/cli.js"
