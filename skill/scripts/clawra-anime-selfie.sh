@@ -1,8 +1,8 @@
 #!/bin/bash
 # clawra-anime-selfie.sh
-# 生成二次元风格自拍并通过 OpenClaw 发送
+# Generate anime-style selfies and send via OpenClaw
 #
-# 用法: ./clawra-anime-selfie.sh "<prompt>" "<channel>" ["<caption>"]
+# Usage: ./clawra-anime-selfie.sh "<prompt>" "<channel>" ["<caption>"]
 
 set -euo pipefail
 
@@ -55,43 +55,43 @@ ASPECT_RATIO="${5:-2:3}"
 OUTPUT_FORMAT="${6:-jpeg}"
 
 if [ -z "$USER_PROMPT" ] || [ -z "$CHANNEL" ]; then
-    echo "用法: $0 <prompt> <channel> [caption] [mode] [aspect_ratio] [output_format]"
+    echo "Usage: $0 <prompt> <channel> [caption] [mode] [aspect_ratio] [output_format]"
     echo ""
-    echo "参数:"
-    echo "  prompt        - 场景描述（必需）如：'在咖啡厅喝咖啡'"
-    echo "  channel       - 目标频道（必需）如：#general, @user, telegram"
-    echo "  caption       - 消息文字（可选）"
-    echo "  mode          - 自拍模式（可选）auto/mirror/direct"
-    echo "  aspect_ratio  - 比例（默认 2:3）"
-    echo "  output_format - 格式（默认 jpeg）"
+    echo "Arguments:"
+    echo "  prompt        - Scene description (required) e.g., 'at a coffee shop'"
+    echo "  channel       - Target channel (required) e.g., #general, @user, telegram"
+    echo "  caption       - Message text (optional)"
+    echo "  mode          - Selfie mode (optional) auto/mirror/direct"
+    echo "  aspect_ratio  - Aspect ratio (default: 2:3)"
+    echo "  output_format - Output format (default: jpeg)"
     echo ""
-    echo "示例:"
-    echo "  $0 \"穿着白色连衣裙在海边\" \"telegram\" \"今天的海滩~\""
+    echo "Example:"
+    echo "  $0 \"wearing white dress at the beach\" \"telegram\" \"Beach day~\""
     exit 1
 fi
 
-# 自动检测模式
+# Auto-detect mode
 if [ "$MODE" = "auto" ]; then
-    if echo "$USER_PROMPT" | grep -qi -E "穿|wearing|outfit|衣服|dress"; then
+    if echo "$USER_PROMPT" | grep -qi -E "wearing|outfit|dress|clothes|fashion"; then
         MODE="mirror"
-        log_info "自动选择模式: 镜子自拍"
+        log_info "Auto-selected mode: mirror selfie"
     else
         MODE="direct"
-        log_info "自动选择模式: 直接自拍"
+        log_info "Auto-selected mode: direct selfie"
     fi
 else
-    log_info "使用指定模式: $MODE"
+    log_info "Using specified mode: $MODE"
 fi
 
-# 构建二次元风格 prompt
+# Build anime-style prompt
 if [ "$MODE" = "mirror" ]; then
     FULL_PROMPT="anime style, high quality manga illustration, cute anime elf girl, $USER_PROMPT, taking a mirror selfie, detailed anime art, soft lighting, 2D style"
 else
     FULL_PROMPT="anime style, high quality manga illustration, close-up selfie of cute anime elf girl, $USER_PROMPT, gentle smile, looking at camera, soft expression, detailed face, 2D anime art, warm atmosphere"
 fi
 
-log_info "生成二次元自拍..."
-log_info "完整 Prompt: $FULL_PROMPT"
+log_info "Generating anime selfie..."
+log_info "Full prompt: $FULL_PROMPT"
 
 # 调用 fal.ai API
 RESPONSE=$(curl -s -X POST "https://fal.run/xai/grok-imagine-image" \
@@ -129,13 +129,13 @@ if [ -n "$REVISED_PROMPT" ]; then
     log_info "优化后的 prompt: $REVISED_PROMPT"
 fi
 
-# 如果没有提供 caption，生成一个可爱的默认消息
+# If no caption provided, generate a cute default message
 if [ -z "$CAPTION" ]; then
-    CAPTION="📸 ${USER_PROMPT}的自拍~"
+    CAPTION="📸 Just took this selfie~"
 fi
 
-# 通过 OpenClaw 发送
-log_info "发送到频道: $CHANNEL"
+# Send via OpenClaw
+log_info "Sending to channel: $CHANNEL"
 
 if [ "$USE_CLI" = true ]; then
     openclaw message send \
@@ -158,11 +158,11 @@ else
         }"
 fi
 
-log_info "✅ 完成! 图片已发送到 $CHANNEL"
+log_info "✅ Done! Image sent to $CHANNEL"
 
-# 输出 JSON 结果
+# Output JSON result
 echo ""
-echo "--- 结果 ---"
+echo "--- Result ---"
 jq -n \
     --arg url "$IMAGE_URL" \
     --arg channel "$CHANNEL" \
