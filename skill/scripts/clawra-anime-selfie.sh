@@ -24,29 +24,29 @@ log_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
-# 检查环境变量
+# Check environment variables
 if [ -z "${FAL_KEY:-}" ]; then
-    log_error "FAL_KEY 环境变量未设置"
-    echo "请从这里获取 API key: https://fal.ai/dashboard/keys"
+    log_error "FAL_KEY environment variable not set"
+    echo "Get your key from API key: https://fal.ai/dashboard/keys"
     exit 1
 fi
 
 # 检查 jq
 if ! command -v jq &> /dev/null; then
-    log_error "需要安装 jq"
-    echo "安装: brew install jq (macOS) 或 apt install jq (Linux)"
+    log_error "is required but not installed jq"
+    echo "Install: brew install jq (macOS) or apt install jq (Linux)"
     exit 1
 fi
 
 # 检查 openclaw CLI
 if ! command -v openclaw &> /dev/null; then
-    log_warn "未找到 openclaw CLI - 将使用直接 API 调用"
+    log_warn "not found openclaw CLI - will use direct API 调用"
     USE_CLI=false
 else
     USE_CLI=true
 fi
 
-# 解析参数
+# Parse arguments
 USER_PROMPT="${1:-}"
 CHANNEL="${2:-}"
 CAPTION="${3:-}"
@@ -107,7 +107,7 @@ RESPONSE=$(curl -s -X POST "https://fal.run/xai/grok-imagine-image" \
 # 检查错误
 if echo "$RESPONSE" | jq -e '.error' > /dev/null 2>&1; then
     ERROR_MSG=$(echo "$RESPONSE" | jq -r '.error // .detail // "Unknown error"')
-    log_error "图片生成失败: $ERROR_MSG"
+    log_error "Image generation failed: $ERROR_MSG"
     exit 1
 fi
 
@@ -115,18 +115,18 @@ fi
 IMAGE_URL=$(echo "$RESPONSE" | jq -r '.images[0].url // empty')
 
 if [ -z "$IMAGE_URL" ]; then
-    log_error "无法从响应中提取图片 URL"
-    echo "响应内容: $RESPONSE"
+    log_error "Failed to extract图片 URL"
+    echo "Response: $RESPONSE"
     exit 1
 fi
 
 log_info "✅ 图片生成成功!"
 log_info "URL: $IMAGE_URL"
 
-# 获取优化后的 prompt
+# 获取Revised prompt
 REVISED_PROMPT=$(echo "$RESPONSE" | jq -r '.revised_prompt // empty')
 if [ -n "$REVISED_PROMPT" ]; then
-    log_info "优化后的 prompt: $REVISED_PROMPT"
+    log_info "Revised prompt: $REVISED_PROMPT"
 fi
 
 # If no caption provided, generate a cute default message
