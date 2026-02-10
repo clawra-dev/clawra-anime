@@ -115,12 +115,12 @@ fi
 IMAGE_URL=$(echo "$RESPONSE" | jq -r '.images[0].url // empty')
 
 if [ -z "$IMAGE_URL" ]; then
-    log_error "Failed to extract图片 URL"
+    log_error "Failed to extract image URL"
     echo "Response: $RESPONSE"
     exit 1
 fi
 
-log_info "✅ 图片生成成功!"
+log_info "✅ Image generated successfully!"
 log_info "URL: $IMAGE_URL"
 
 # 获取Revised prompt
@@ -139,7 +139,6 @@ log_info "Sending to channel: $CHANNEL"
 
 if [ "$USE_CLI" = true ]; then
     openclaw message send \
-        --action send \
         --target "$CHANNEL" \
         --message "$CAPTION" \
         --media "$IMAGE_URL"
