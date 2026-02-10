@@ -1,33 +1,45 @@
-# Clawra
-<img width="300"  alt="image" src="https://github.com/user-attachments/assets/41512c51-e61d-4550-b461-eed06a1b0ec8" />
+# Clawra Anime - 二次元虚拟女友 🌸
 
+[![npm version](https://img.shields.io/npm/v/clawra-anime)](https://www.npmjs.com/package/clawra-anime)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Quick Start
+让你的 OpenClaw 助手变成可以发自拍的二次元女友！基于 [Clawra](https://github.com/SumeLabs/clawra) 改造。
+
+**特色：**
+- 🎨 动漫风格自拍生成
+- 💝 温柔可爱的虚拟女友人设
+- 📸 智能场景识别（镜子/直接自拍）
+- 🌈 全平台支持（Telegram/Discord/WhatsApp 等）
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-npx clawra@latest
+npx clawra-anime@latest
 ```
 
-This will:
-1. Check OpenClaw is installed
-2. Guide you to get a fal.ai API key
-3. Install the skill to `~/.openclaw/skills/clawra-selfie/`
-4. Configure OpenClaw to use the skill
-5. Add selfie capabilities to your agent's SOUL.md
+这会自动：
+1. 检查 OpenClaw 是否安装
+2. 引导你获取 fal.ai API key
+3. 安装技能到 `~/.openclaw/skills/clawra-anime-selfie/`
+4. 配置 OpenClaw
+5. 添加二次元女友人设到 SOUL.md
 
-## What It Does
+## ✨ 功能特性
 
-Clawra Selfie enables your OpenClaw agent to:
-- **Generate selfies** using a consistent reference image
-- **Send photos** across all messaging platforms (Discord, Telegram, WhatsApp, etc.)
-- **Respond visually** to "what are you doing?" and "send a pic" requests
+Clawra Anime 让你的 OpenClaw 助手能够：
+- **生成二次元风格自拍** - 使用固定的精灵少女角色
+- **跨平台发送照片** - Discord、Telegram、WhatsApp 等
+- **智能场景响应** - "在干嘛？"、"发张照片" 等自然对话
+- **虚拟女友互动** - 温柔可爱的回复风格，适当使用颜文字
 
-### Selfie Modes
+### 📸 自拍模式
 
-| Mode | Best For | Keywords |
-|------|----------|----------|
-| **Mirror** | Full-body shots, outfits | wearing, outfit, fashion |
-| **Direct** | Close-ups, locations | cafe, beach, portrait, smile |
+| 模式 | 适用场景 | 触发关键词 |
+|------|----------|-----------|
+| **镜子自拍** | 全身照、展示服装 | 穿着、outfit、衣服、dress |
+| **直接自拍** | 特写、场景照 | 咖啡厅、beach、微笑、地点 |
 
 ## Prerequisites
 
