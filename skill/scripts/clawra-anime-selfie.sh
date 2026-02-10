@@ -140,7 +140,7 @@ log_info "Sending to channel: $CHANNEL"
 if [ "$USE_CLI" = true ]; then
     openclaw message send \
         --action send \
-        --channel "$CHANNEL" \
+        --target "$CHANNEL" \
         --message "$CAPTION" \
         --media "$IMAGE_URL"
 else
