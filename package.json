@@ -1,7 +1,7 @@
 {
   "name": "clawra-anime",
-  "version": "1.0.0",
-  "description": "二次元虚拟女友 - OpenClaw Skill for anime-style selfie generation",
+  "version": "1.0.1",
+  "description": "Anime virtual girlfriend for OpenClaw - Generate anime-style selfies with AI",
   "main": "skill/SKILL.md",
   "bin": {
     "clawra-anime": "./bin/cli.js"
@@ -14,16 +14,22 @@
     "skill",
     "anime",
     "waifu",
+    "virtual-girlfriend",
     "selfie",
     "image-generation",
     "fal-ai",
-    "grok-imagine"
+    "grok-imagine",
+    "ai-companion"
   ],
   "author": "Fork of SumeLabs/clawra",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/clawra-anime.git"
+    "url": "git+https://github.com/clawra-dev/clawra-anime.git"
+  },
+  "homepage": "https://github.com/clawra-dev/clawra-anime#readme",
+  "bugs": {
+    "url": "https://github.com/clawra-dev/clawra-anime/issues"
   },
   "dependencies": {
     "@fal-ai/client": "^1.0.0"
